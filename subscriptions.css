@@ -1,0 +1,37 @@
+.Constellation_subscription { 
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  padding: 5px 0 5px 0;
+  margin: 0 2px;
+  line-height: 18px;
+}
+
+.Constellation_subscription:first-child {
+  padding-top: 2px;
+}
+
+.Constellation_subscription_toggle {
+  height: 36px;
+  width: 28px;
+  line-height: 38px;
+  text-align: center;
+  float: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /*margin-left: 8px;*/
+  font-family: Menlo !important;
+  font-size: 26px;
+  color: rgba(255,255,255,.4);
+  margin-right: -8px;
+}
+
+.Constellation_subscription_toggle:hover {
+  color: #EB4C16;
+  cursor: pointer;
+}
+
+.Constellation_subscription_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

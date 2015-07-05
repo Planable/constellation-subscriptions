@@ -1,0 +1,15 @@
+<template name="Constellation_subscriptions_menu">
+  <div style="text-indent: 8px;">Polling every 5 seconds</div>
+</template>
+
+<template name="Constellation_subscriptions_main">
+  {{#each subscriptions}}
+    <div class="Constellation_subscription">
+      <div class="Constellation_subscription_toggle">&times;</div>
+      <div class="Constellation_subscription_name">{{name}}</div>
+      Params: {{params}} 
+    </div>
+  {{else}}
+    No subscriptions found
+  {{/each}}
+</template>
