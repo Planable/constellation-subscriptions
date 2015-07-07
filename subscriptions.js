@@ -1,8 +1,8 @@
 // Hook in to constellation UI
 
-var Constellation = Package["babrahams:constellation"];
+var Constellation = Package["babrahams:constellation"].API;
 	
-Constellation.API.addTab({
+Constellation.addTab({
   name: 'Subscriptions',
   mainContentTemplate: 'Constellation_subscriptions_main',
   menuContentTemplate: 'Constellation_subscriptions_menu'
@@ -43,46 +43,3 @@ Template.Constellation_subscriptions_main.events({
 	Meteor.default_connection._subscriptions[this].stop()
   }
 });
-
-
-// Object for subscriptions
-// var subscriptions = Meteor.default_connection._subscriptions
-// Object.observe polyfill
-
-// Template.Constellation_subscriptions.helpers({
-//  subscription: function () {
-//    var data = ConstellationSubData.get()
-//    return data;
-//  },
-//  subscriptionParams: function() {
-//    return this.params
-//  }
-// });
-
-// Template.Constellation_subscriptions.events({
-//  'click .Constellation_stop_subscription': function () {
-//    this.stop()
-//  },
-//  'click #createNewSub': function () {
-
-//    var argument = false,
-//      stuff = [];
-    
-//    var askForArgument = function () {
-//      argument = prompt("What is the name of your subscription?");
-//      addArgument(argument);
-//    }
-    
-//    var addArgument = function (argument) {
-//      if (argument) {
-//        stuff.push(argument);
-//        askForArgument();
-//      } else {
-//        Meteor.subscribe.apply(Meteor, stuff); 
-//      }
-//    }
-
-//    askForArgument();
-
-//  }
-// });
