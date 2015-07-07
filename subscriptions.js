@@ -1,7 +1,7 @@
 // Hook in to constellation UI
 
 var Constellation = Package["babrahams:constellation"].API;
-	
+    
 Constellation.addTab({
   name: 'Subscriptions',
   mainContentTemplate: 'Constellation_subscriptions_main',
@@ -40,6 +40,6 @@ Template.Constellation_subscriptions_main.helpers({
 
 Template.Constellation_subscriptions_main.events({
   'click .Constellation_subscription_toggle': function () {
-	Meteor.default_connection._subscriptions[this].stop()
+    Meteor.default_connection._subscriptions[this].stop()
   }
 });
