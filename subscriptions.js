@@ -14,12 +14,14 @@ Meteor.setInterval(function () {
   var subscriptions  = Meteor.default_connection._subscriptions;
   var subKeys        = Object.keys(subscriptions);
   Session.set("Constellation_subscriptions", subKeys);
-},5000);
+},3000);
 
 Template.Constellation_subscriptions_main.helpers({
   subscriptions: function () {
  
-    return Session.get("Constellation_subscriptions");
+    return _.filter(Session.get("Constellation_subscriptions"), function (subscription) {
+	  return subscription.indexOf("Constellation_") === -1;
+	});
 
   },
   name: function () {
