@@ -1,23 +1,42 @@
 // Hook in to constellation UI
 
-var Constellation = Package["babrahams:constellation"].API;
+var Constellation = Package["constellation:console"].API;
     
 Constellation.addTab({
   name: 'Subscriptions',
   mainContentTemplate: 'Constellation_subscriptions_main',
-  menuContentTemplate: 'Constellation_subscriptions_menu'
-}); 
+  menuContentTemplate: 'Constellation_subscriptions_menu',
+  onClick: "setSubscriptions"
+});
 
-// Poll subscriptions on this connection
-
-Meteor.setInterval(function () {
-  var currentTab = Constellation.getCurrentTab();
-  if (currentTab && currentTab.id === 'Subscriptions') {
-    var subscriptions  = Meteor.default_connection._subscriptions;
-    var subKeys        = Object.keys(subscriptions);
-    Session.set("Constellation_subscriptions", subKeys);
+Constellation.registerCallbacks({
+  setSubscriptions : function () {
+    if (Constellation.isCurrentTab('Subscriptions', 'plugin')) {
+      setSubscriptions();
+    }
   }
-},3000);
+});
+
+var setSubscriptions = function () {
+  var subscriptions  = Meteor.default_connection._subscriptions;
+  var subKeys        = Object.keys(subscriptions);
+  Session.set("Constellation_subscriptions", subKeys);
+}
+
+if (Object.observe) {
+  Object.observe(Meteor.default_connection._subscriptions, function () {
+    setSubscriptions();
+  });
+}
+else {
+  // Poll subscriptions on this connection
+  Meteor.setInterval(function () {
+    var currentTab = Constellation.getCurrentTab();
+    if (currentTab && currentTab.id === 'Subscriptions') {
+      setSubscriptions();
+    }
+  },3000);
+}
 
 Template.Constellation_subscriptions_main.helpers({
   subscriptions: function () {
