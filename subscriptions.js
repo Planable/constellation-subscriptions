@@ -17,10 +17,12 @@ Constellation.registerCallbacks({
   }
 });
 
+var SubscriptionsDict = new ReactiveDict('constellation-subscriptions');
+
 var setSubscriptions = function () {
   var subscriptions  = Meteor.default_connection._subscriptions;
   var subKeys        = Object.keys(subscriptions);
-  Session.set("Constellation_subscriptions", subKeys);
+  SubscriptionsDict.set("Constellation_subscriptions", subKeys);
 }
 
 if (Object.observe) {
@@ -41,7 +43,7 @@ else {
 Template.Constellation_subscriptions_main.helpers({
   subscriptions: function () {
  
-    return _.filter(Session.get("Constellation_subscriptions"), function (subscription) {
+    return _.filter(SubscriptionsDict.get("Constellation_subscriptions"), function (subscription) {
 	  return subscription.indexOf("Constellation_") === -1;
 	});
 
