@@ -11,9 +11,12 @@ Constellation.addTab({
 // Poll subscriptions on this connection
 
 Meteor.setInterval(function () {
-  var subscriptions  = Meteor.default_connection._subscriptions;
-  var subKeys        = Object.keys(subscriptions);
-  Session.set("Constellation_subscriptions", subKeys);
+  var currentTab = Constellation.getCurrentTab();
+  if (currentTab && currentTab.id === 'Subscriptions') {
+    var subscriptions  = Meteor.default_connection._subscriptions;
+    var subKeys        = Object.keys(subscriptions);
+    Session.set("Constellation_subscriptions", subKeys);
+  }
 },3000);
 
 Template.Constellation_subscriptions_main.helpers({
