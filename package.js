@@ -20,6 +20,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('subscriptions');
+  api.use('constellation:subscriptions');
   api.addFiles('subscriptions-tests.js');
 });
