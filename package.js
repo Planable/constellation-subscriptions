@@ -1,6 +1,6 @@
 Package.describe({
   name: 'constellation:subscriptions',
-  version: '0.3.4',
+  version: '0.3.5',
   summary: 'Subscriptions plugin for Constellation',
   git: 'https://github.com/JackAdams/constellation-subscriptions.git',
   documentation: 'README.md',
@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.0');
 
   api.use(['templating','session','blaze','reactive-dict'], 'client');
-  api.use('constellation:console@1.3.0', 'client');
+  api.use('constellation:console@1.3.1', 'client');
 
   api.addFiles('subscriptions.css','client');
   api.addFiles('subscriptions.html','client');
