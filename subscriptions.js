@@ -25,20 +25,13 @@ var setSubscriptions = function () {
   SubscriptionsDict.set("Constellation_subscriptions", subKeys);
 }
 
-if (Object.observe) {
-  Object.observe(Meteor.default_connection._subscriptions, function () {
+// Poll subscriptions on this connection
+Meteor.setInterval(function () {
+  var currentTab = Constellation.getCurrentTab();
+  if (currentTab && currentTab.id === 'Subscriptions') {
     setSubscriptions();
-  });
-}
-else {
-  // Poll subscriptions on this connection
-  Meteor.setInterval(function () {
-    var currentTab = Constellation.getCurrentTab();
-    if (currentTab && currentTab.id === 'Subscriptions') {
-      setSubscriptions();
-    }
-  },3000);
-}
+  }
+},3000);
 
 Template.Constellation_subscriptions_main.helpers({
   subscriptions: function () {
