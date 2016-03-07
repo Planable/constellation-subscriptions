@@ -1,6 +1,6 @@
 Package.describe({
   name: 'constellation:subscriptions',
-  version: '0.4.0',
+  version: '0.4.1',
   summary: 'Subscriptions plugin for Constellation',
   git: 'https://github.com/JackAdams/constellation-subscriptions.git',
   documentation: 'README.md',
