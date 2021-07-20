@@ -1,6 +1,6 @@
 // Hook in to constellation UI
 
-var Constellation = Package["constellation:console"].API;
+var Constellation = Package["planable:console"].API;
     
 Constellation.addTab({
   name: 'Subscriptions',
